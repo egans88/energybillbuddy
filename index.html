@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>MPRN Lookup Prototype</h2>
+    <input id="mprn" placeholder="Enter MPRN" />
+    <button onclick="lookup()">Lookup</button>
+    <pre id="out"></pre>
+
+    <script>
+      async function lookup() {
+        const m = document.getElementById('mprn').value;
+        const res = await fetch('/api/bill/' + m);
+        const data = await res.json();
+        document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+      }
+    </script>
+  </body>
+</html>
